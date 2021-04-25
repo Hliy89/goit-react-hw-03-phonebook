@@ -18,6 +18,23 @@ class Phonebook extends Component {
     filter: '',
   };
 
+  //==================================================== componentDidMount
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parceContacts = JSON.parse(contacts);
+    if (parceContacts) {
+      this.setState({ contacts: parceContacts });
+    }
+  }
+
+  //==================================================== componentDidUpdate
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('Обновилось поле Contacts');
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   //==================================================== addContact
   addContact = (name, number) => {
     const newContact = {
