@@ -30,7 +30,6 @@ class Phonebook extends Component {
   //==================================================== componentDidUpdate
   componentDidUpdate(prevProps, prevState) {
     if (this.state.contacts !== prevState.contacts) {
-      console.log('Обновилось поле Contacts');
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
