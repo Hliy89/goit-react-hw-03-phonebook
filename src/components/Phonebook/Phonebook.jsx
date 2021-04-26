@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Form from '../Form';
 import ContactList from '../ContactList';
@@ -20,18 +21,17 @@ class Phonebook extends Component {
 
   //==================================================== componentDidMount
   componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const parceContacts = JSON.parse(contacts);
-    if (parceContacts) {
-      this.setState({ contacts: parceContacts });
-    }
+    const contactsList = JSON.parse(localStorage.getItem('contacts'));
+    this.setState({
+      contacts: contactsList || [],
+    });
   }
 
   //==================================================== componentDidUpdate
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
+  componentDidUpdate() {
+    const { contacts } = this.state;
+    const contactsList = JSON.stringify(contacts);
+    localStorage.setItem('contacts', contactsList);
   }
 
   //==================================================== addContact
@@ -95,5 +95,15 @@ class Phonebook extends Component {
     );
   }
 }
+
+Phonebook.defaultProps = {
+  contacts: [],
+  filter: '',
+};
+
+Phonebook.propTypes = {
+  contacts: PropTypes.array,
+  filter: PropTypes.string,
+};
 
 export default Phonebook;
