@@ -77,13 +77,11 @@ class Form extends Component {
 }
 
 Form.defaultProps = {
-  name: '',
-  number: '',
+  onSubmit: () => {},
 };
 
 Form.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.string,
+  onSubmit: PropTypes.func,
 };
 
 export default Form;

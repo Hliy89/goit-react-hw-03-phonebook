@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import style from './ContactList.module.css';
 
@@ -15,6 +16,16 @@ const ContactList = ({ contacts, filter, onDelete }) => {
   ));
 
   return <ul className={style.contactList}>{contactElement}</ul>;
+};
+
+ContactList.defaultProps = {
+  contacts: [],
+  onDelete: () => {},
+};
+
+ContactList.propTypes = {
+  contacts: PropTypes.array,
+  onDelete: PropTypes.func,
 };
 
 export default ContactList;

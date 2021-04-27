@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import Form from '../Form';
 import ContactList from '../ContactList';
@@ -90,15 +89,5 @@ class Phonebook extends Component {
     );
   }
 }
-
-Phonebook.defaultProps = {
-  contacts: [],
-  filter: '',
-};
-
-Phonebook.propTypes = {
-  contacts: PropTypes.array,
-  filter: PropTypes.string,
-};
 
 export default Phonebook;
